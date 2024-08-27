@@ -12,6 +12,23 @@ $(document).ready(function() {
       updateActiveSection();
     });
   
+    const sidebar = document.querySelector('.sidebar');
+    const menuIcon = document.querySelector('.menu_icon');
+    const closeBtn = document.querySelector('.sidebar .closebtn');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+    }
+
+    menuIcon.addEventListener('click', toggleSidebar);
+    closeBtn.addEventListener('click', toggleSidebar);
+
+    document.addEventListener('click', function(event) {
+      if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+        sidebar.classList.remove('show');
+      }
+    });
+
     $(".header ul li a").click(function(e) {
       e.preventDefault(); 
   
